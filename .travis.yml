@@ -13,3 +13,9 @@ after_success:
     - docker build -t sabin2000/multi-nginx ./nginx
     - docker build -t sabin2000/multi-server ./server
     - docker build -t sabin2000/multi-worker ./worker
+
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push sabin2000/multi-client
+    - docker push sabin2000/multi-nginx
+    - docker push sabin2000/multi-server
+    - docker push sabin2000/multi-worker
